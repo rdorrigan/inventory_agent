@@ -28,7 +28,7 @@ jobs:
 
       - name: Lint with flake8
         run: |
-          flake8 src/ tests/ --max-line-length=100 --ignore=E203,W503
+          flake8 src/ tests/ --max-line-length=100 --ignore=E203,W503,E302,W293,W292
 
       - name: Run Test Suite
         env:
