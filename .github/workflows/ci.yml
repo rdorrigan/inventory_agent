@@ -24,5 +24,5 @@ jobs:
         run: flake8 src/ tests/ --max-line-length=100
       - name: Run Pytest
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_KEY: "sk-fake-key-for-ci-testing-only" # ${{ secrets.OPENAI_API_KEY }}
         run: pytest tests/

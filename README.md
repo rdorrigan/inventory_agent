@@ -1,6 +1,6 @@
 # Autonomous Inventory Exception & Reorder Workflow
 
-[![CI Pipeline](https://github.com/username/inventory-agentic-workflow/actions/workflows/ci.yml/badge.svg)](https://github.com/username/inventory-agentic-workflow/actions/workflows/ci.yml)
+[![CI Pipeline](https://github.com/rdorrigan/inventory-agentic-workflow/actions/workflows/ci.yml/badge.svg)](https://github.com/rdorrigan/inventory-agentic-workflow/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![LangGraph](https://img.shields.io/badge/Orchestration-LangGraph-orange.svg)](https://github.com/langchain-ai/langgraph)
 [![FastAPI](https://img.shields.io/badge/API-FastAPI-green.svg)](https://fastapi.tiangolo.com/)
@@ -133,7 +133,7 @@ inventory-agentic-workflow/
 ### 1. Repository Installation
 ```bash
 # Clone repository
-git clone https://github.com/username/inventory-agentic-workflow.git
+git clone https://github.com/rdorrigan/inventory-agentic-workflow.git
 cd inventory-agentic-workflow
 
 # Create and activate virtual environment
