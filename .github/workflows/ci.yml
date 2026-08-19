@@ -2,27 +2,36 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, master ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip' # Speeds up builds by caching pip packages
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install pytest flake8
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install pytest flake8 pytest-cov
+
       - name: Lint with flake8
-        run: flake8 src/ tests/ --max-line-length=100
-      - name: Run Pytest
+        run: |
+          flake8 src/ tests/ --max-line-length=100 --ignore=E203,W503
+
+      - name: Run Test Suite
         env:
-          OPENAI_API_KEY: "sk-fake-key-for-ci-testing-only" # ${{ secrets.OPENAI_API_KEY }}
-        run: pytest tests/
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || 'sk-fake-key-for-testing' }}
+        run: |
+          pytest tests/ --doctest-modules --junitxml=junit/test-results.xml
